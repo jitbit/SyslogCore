@@ -63,12 +63,12 @@ namespace Jitbit.Utils
 		[DllImport("libc")]
 		private static extern void closelog();
 
-		public static void WriteSysLog(Syslog.Level level, string message)
+		public static void WriteSysLog(Syslog.Level level, string identity, string message)
 		{
 			//are we on linux?
 			if (!OperatingSystem.IsLinux()) return;
 
-			IntPtr ident = Marshal.StringToHGlobalAnsi("Jitbit Helpdesk");
+			IntPtr ident = Marshal.StringToHGlobalAnsi(identity);
 			openlog(ident, Option.Console | Option.Pid | Option.PrintError, Facility.User);
 			syslog((int)Facility.User | (int)level, message);
 			closelog();
