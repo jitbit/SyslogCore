@@ -5,7 +5,7 @@ Simple (!) way to write to `syslog` aka `/dev/log` aka `/var/log/syslog` in .NET
 ## Usage
 
 ```csharp
-Syslog.Write(Syslog.Level level, string message)
+Syslog.Write(Syslog.Level.Warning, "MyAwesomeApp", "something went wrong");
 ```
 
 ## The problem
