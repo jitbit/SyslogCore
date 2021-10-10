@@ -63,7 +63,7 @@ namespace Jitbit.Utils
 		[DllImport("libc")]
 		private static extern void closelog();
 
-		public static void WriteSysLog(Syslog.Level level, string identity, string message)
+		public static void Write(Syslog.Level level, string identity, string message)
 		{
 			//are we on linux?
 			if (!OperatingSystem.IsLinux()) return;
