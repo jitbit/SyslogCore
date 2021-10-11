@@ -1,6 +1,6 @@
 # SyslogCore
 
-Simple way to write to `syslog` aka `/dev/log` aka `/var/log/syslog` in .NET Core on Linux. Consists of one short C# file (70 lines!) that you can throw into your project. Tested in ASP.NET Core 5.
+Simple way to write to `syslog` aka `/dev/log` aka `/var/log/syslog` in .NET Core on Linux. Consists of [one short C# file](Syslog.cs) (70 lines!) that you can throw into your project. Tested in ASP.NET Core 5.
 
 ## Usage
 
