@@ -24,7 +24,7 @@ Where do you place the logs? How do you grant permissions to that location? How 
 
 **Why reinvent the wheel?!**
 
-Almost every linux distro comes with a built-in feature called `syslog`. It takes care of everything: queues messages, writes to log files, rotates files, and exists on literally every linux machine. It has lots of ways to send messages to it: UDP-listener, TCP-listener, a "Unix socket" at `/dev/log`, a `logger` CLI command or a `syslog()` system function etc.
+Almost every linux distro comes with a built-in feature called `syslog`. It takes care of everything: queues messages, writes to log files, rotates files (via "logrotate"), and exists on literally every Linux machine. It has lots of ways to send messages to it: UDP-listener, TCP-listener, a "Unix socket" at `/dev/log`, a `logger` CLI command or a `syslog()` system function etc.
 
 For Windows folks: think of it as an `EventLog.Write`, *but for Linux*
 
@@ -42,7 +42,7 @@ Run `sudo apt-get install rsyslog`
 
 ### 2. Syslog is present on my machine but there's no logs
 
-Another issue is `rsyslog` might be present but it's not running (known issue with WSL2) in that case, check that its running, if not - start it:
+`rsyslog` might be present but it's _not running_ (known issue with WSL2 for example). Check that its running, if not - start it:
 
 ```
 $ service rsyslog status
@@ -50,7 +50,7 @@ $ service rsyslog status
 $ sudo service rsyslog start
 ```
 
-Then check that logging actually works:
+Then test that logging actually works:
 
 ```
 $ logger testtesttest
