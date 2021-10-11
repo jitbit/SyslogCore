@@ -30,11 +30,13 @@ For Windows folks: think of it as an `EventLog.Write`, *but for Linux*
 
 ## How do we use it in C#?
 
-Just use the good old `DllImport` to reference the external `libc` library, and call the original [syslog](https://linux.die.net/man/3/syslog) function.
+Just use the good old `DllImport` to reference the external `libc` library, and call the original [syslog](https://linux.die.net/man/3/syslog) function. That's it. No Nugets, no dependency-injection.
 
 Happy coding.
 
-## P.S. What if (for some weird reason) syslog is not installed on my Linux?
+# FAQ
+
+### What if (for some weird reason) syslog is not installed on my Linux?
 
 Run `sudo apt-get install rsyslog`
 
@@ -45,3 +47,7 @@ service rsyslog status
  * rsyslogd is not running
 sudo service rsyslog start
 ```
+
+### What if I copy paste this into a cross-platform app that runs on both Windows and Linux?
+
+No worries, the code checks if it runs on Windows or Linux before proceeding.
