@@ -24,7 +24,9 @@ Where do you place the logs? How do you grant permissions to that location? How 
 
 **Why reinvent the wheel?!**
 
-Almost every linux distro comes with a built-in feature called `syslog`. It takes care of everything: receives messages, writes logs, rotates files, and exists on literally every linux machine. It has lots of ways to send messages to it, UDP-listener, TCP-listener, a "Unix socket" at `/dev/log`, a `logger` CLI command, a `syslog()` system function etc. etc.
+Almost every linux distro comes with a built-in feature called `syslog`. It takes care of everything: receives messages, writes logs, rotates files, and exists on literally every linux machine. It has lots of ways to send messages to it, UDP-listener, TCP-listener, a "Unix socket" at `/dev/log`, a `logger` CLI command or a `syslog()` system function etc.
+
+For Windows folks: think of it as an `EventLog.Write`, *but for Linux*
 
 ## How do we use it in C#?
 
