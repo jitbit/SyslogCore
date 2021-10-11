@@ -10,7 +10,9 @@ Syslog.Write(Syslog.Level.Warning, "MyAwesomeApp", "something went wrong");
 
 ## The problem
 
-.NET Core (aka .NET 5) does not have a [built-in](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-5.0&tabs=aspnetcore2x#built-in-logging-providers-1) logging provider for linux. The official recommendation is to use a 3rd party logger, like Serilog, NLog etc. Heavyweight large libraries.
+.NET Core (aka .NET 5) does not have a [built-in](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-5.0&tabs=aspnetcore2x#built-in-logging-providers-1) logging provider for linux. The official recommendation is to use a 3rd party logger, like Serilog, NLog, Log4Net etc.
+
+All heavyweight large libraries.
 
 There's an [ongoing discussion](https://github.com/aspnet/Logging/issues/441) if a default  logger should be a part of .NET runtime, but it's stall.
 
