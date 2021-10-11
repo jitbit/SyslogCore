@@ -16,7 +16,7 @@ There's an [ongoing discussion](https://github.com/aspnet/Logging/issues/441) if
 
 ## File logging is tricky
 
-Where do you place the logs? How do you grant permissions to the file? How should the files be formatted? Microsoft couldn't decide and... simply ignored the problem.
+Where do you place the logs? How do you grant permissions to that location? How should the files be formatted? When do the files rotate/roll over? Microsoft couldn't decide and... simply ignored the problem.
 
 ## Enter Syslog
 
