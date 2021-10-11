@@ -20,7 +20,7 @@ There's an [ongoing discussion](https://github.com/aspnet/Logging/issues/441) if
 
 Where do you place the logs? How do you grant permissions to that location? How should the files be formatted? When do the files rotate/roll over? Microsoft couldn't decide and... simply ignored the problem.
 
-## Enter Syslog
+## Enter `syslog`
 
 **Why reinvent the wheel?!**
 
