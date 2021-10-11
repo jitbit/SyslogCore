@@ -36,18 +36,28 @@ Happy coding.
 
 # FAQ
 
-### What if (for some weird reason) syslog is not installed on my Linux?
+### 1. What if (for some weird reason) syslog is not installed on my Linux?
 
 Run `sudo apt-get install rsyslog`
+
+### 2. Syslog is present on my machine but there's no logs
 
 Another issue is `rsyslog` might be present but it's not running (known issue with WSL2) in that case, check that its running, if not - start it:
 
 ```
-service rsyslog status
+$ service rsyslog status
  * rsyslogd is not running
-sudo service rsyslog start
+$ sudo service rsyslog start
 ```
 
-### What if I copy paste this into a cross-platform app that runs on both Windows and Linux?
+Then check that logging actually works:
+
+```
+$ logger testtesttest
+$ tail -1 /var/log/syslog
+Oct 11 13:51:18 DESKTOP-CDBR5NK jazz: testtesttest
+```
+
+### 3. What if I copy paste this into a cross-platform app that runs on both Windows and Linux?
 
 No worries, the code checks if it runs on Windows or Linux before proceeding.
