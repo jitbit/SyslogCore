@@ -6,7 +6,7 @@ namespace Jitbit.Utils
 	public class Syslog
 	{
 		[Flags]
-		public enum Option
+		private enum Option
 		{
 			Pid = 0x01,
 			Console = 0x02,
@@ -19,26 +19,7 @@ namespace Jitbit.Utils
 		[Flags]
 		private enum Facility
 		{
-			Kernel = 0 << 3,
-			User = 1 << 3,
-			Mail = 2 << 3,
-			Daemon = 3 << 3,
-			Auth = 4 << 3,
-			Syslog = 5 << 3,
-			Lpr = 6 << 3,
-			News = 7 << 3,
-			Uucp = 8 << 3,
-			Cron = 8 << 3,
-			AuthPriv = 10 << 3,
-			Ftp = 11 << 3,
-			Local0 = 16 << 3,
-			Local1 = 17 << 3,
-			Local2 = 18 << 3,
-			Local3 = 19 << 3,
-			Local4 = 20 << 3,
-			Local5 = 21 << 3,
-			Local6 = 22 << 3,
-			Local7 = 23 << 3,
+			User = 1 << 3, //removed other unused enum values for brevity
 		}
 
 		[Flags]
@@ -68,9 +49,18 @@ namespace Jitbit.Utils
 			//are we on linux?
 			if (!OperatingSystem.IsLinux()) return;
 
+			//validate input
+			if (string.IsNullOrWhiteSpace(message) && string.IsNullOrWhiteSpace(identity)) return;
+
 			IntPtr ident = Marshal.StringToHGlobalAnsi(identity);
 			openlog(ident, Option.Console | Option.Pid | Option.PrintError, Facility.User);
-			syslog((int)Facility.User | (int)level, message);
+
+			//split multiline messages, otherwise we end up with "line1 #012 line2 #012 line3" etc
+			foreach (var line in message.Split('\n', StringSplitOptions.RemoveEmptyEntries))
+			{
+				syslog((int)Facility.User | (int)level, line.Trim());
+			}
+			
 			closelog();
 			Marshal.FreeHGlobal(ident);
 		}
