@@ -31,3 +31,15 @@ Almost every linux distro comes with a built-in feature called `syslog`. It take
 Just use the good old `DllImport` to reference the external `libc` library, and call the original [syslog](https://linux.die.net/man/3/syslog) function.
 
 Happy coding.
+
+## P.S. What if (for some weird reason) syslog is not installed on my Linux?
+
+Run `sudo apt-get install rsyslog`
+
+Another issue is `rsyslog` might be present but it's not running (known issue with WSL2) in that case, check that its running, if not - start it:
+
+```
+service rsyslog status
+ * rsyslogd is not running
+sudo service rsyslog start
+```
