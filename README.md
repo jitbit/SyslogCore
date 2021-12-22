@@ -10,7 +10,7 @@ Syslog.Write(Syslog.Level.Warning, "MyAwesomeApp", "something went wrong");
 
 ## The problem
 
-.NET Core (aka .NET 5) does not have a [built-in](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-5.0&tabs=aspnetcore2x#built-in-logging-providers-1) logging provider for linux. The official recommendation is to use a 3rd party logger, like Serilog, NLog, Log4Net etc.
+.NET Core (aka .NET 5 and later) does not have a [built-in](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-5.0&tabs=aspnetcore2x#built-in-logging-providers-1) logging provider for linux. The official recommendation is to use a 3rd party logger, like Serilog, NLog, Log4Net etc.
 
 All heavyweight large libraries.
 
@@ -27,6 +27,10 @@ Where do you place the logs? How do you grant permissions to that location? How 
 Almost every linux distro comes with a built-in feature called `syslog`. It takes care of everything: queues messages, writes to log files, rotates files (via "logrotate"), and exists on literally every Linux machine. It has lots of ways to send messages to it: UDP-listener, TCP-listener, a "Unix socket" at `/dev/log`, a `logger` CLI command or a `syslog()` system function etc.
 
 For Windows folks: think of it as an `EventLog.Write`, *but for Linux*
+
+## Works with docker too!
+
+If you're running an apop inside a container, `docker logs` will show these logs, zero configuration.
 
 ## How do we use it in C#?
 
