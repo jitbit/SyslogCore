@@ -30,7 +30,7 @@ For Windows folks: think of it as an `EventLog.Write`, *but for Linux*
 
 ## Works with docker too!
 
-If you're running an apop inside a container, `docker logs` will show these logs, zero configuration.
+If you're running an app inside a container, `docker logs` will show these logs, zero configuration.
 
 ## How do we use it in C#?
 
